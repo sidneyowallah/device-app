@@ -7,7 +7,7 @@ table {
 td,
 th {
 	border-top: 1px solid #ddd;
-	padding: 10px 60px 10px 8px;
+	padding: 10px 20px 10px 8px;
 	text-align: left;
 	vertical-align: middle;
 }
@@ -17,40 +17,24 @@ th {
 	font-size: 1.2em;
 }
 
-.list-row:hover {
-	background-color: #ddd;
-	cursor: pointer;
-}
-
 .checkbox-cell {
 	text-align: center;
 	padding-left: 30px;
 }
 
-.name-cell {
-	text-align: left;
-	min-width: 130px;
-}
-
-.device-cell {
-	text-align: left;
-}
-
-.path-cell {
-	text-align: left;
-}
-
-.status-cell {
-	text-align: left;
-	text-transform: capitalize;
-}
-
-.green-dot {
-	height: 15px;
-	width: 15px;
-	margin-right: 5px;
-	margin-left: -20px;
-	background-color: #6ed659;
-	border-radius: 50%;
+.download-button {
+	vertical-align: middle;
 	display: inline-block;
+}
+.download-button:hover {
+	cursor: pointer;
+}
+
+.download-button img {
+	vertical-align: middle;
+}
+
+.select-all-row {
+	font-size: 1em;
+	font-weight: 300;
 }

@@ -1,3 +1,37 @@
+.list-row:hover {
+	background-color: #ddd;
+	cursor: pointer;
+}
+
+.name-cell {
+	text-align: left;
+	min-width: 130px;
+}
+
+.device-cell {
+	text-align: left;
+}
+
+.path-cell {
+	text-align: left;
+}
+
+.status-cell {
+	width: 100px;
+	text-align: left;
+	text-transform: capitalize;
+}
+
+.green-dot {
+	height: 15px;
+	width: 15px;
+	margin-right: 5px;
+	margin-left: -20px;
+	background-color: #6ed659;
+	border-radius: 50%;
+	display: inline-block;
+}
+
 .select-background {
 	background-color: #ccc;
 }

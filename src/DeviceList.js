@@ -11,7 +11,7 @@ export const DeviceList = () => {
 
 	const [checkedState, setCheckedState] = useState([]);
 	const [selectCount, setSelectCount] = useState(0);
-	const [selected, setSelected] = useState([]);
+	const [selectDownload, setSelectDownload] = useState([]);
 
 	function onChangeSelectAll(e) {
 		selectCheckBox.current.forEach(
@@ -21,27 +21,29 @@ export const DeviceList = () => {
 		if (e.target.checked) {
 			setSelectCount(deviceData.length);
 			setCheckedState(Array(deviceData.length).fill(true));
+			setSelectDownload(deviceData);
 		} else {
 			setSelectCount(0);
 			setCheckedState(Array(deviceData.length).fill(false));
+			setSelectDownload([]);
 		}
 	}
 
-	function onChangeCheckBox(e) {
+	function onChangeCheckBox(e, item) {
 		const i = selectCheckBox.current.indexOf(e.target);
 		const newState = Array.from(checkedState);
 		newState[i] = e.target.checked;
 		setCheckedState(newState);
 
 		if (e.target.checked) {
-			setSelected([...selected, e.target.name]);
 			setSelectCount(selectCount + 1);
+			setSelectDownload((selectDownload) => [...selectDownload, item]);
 		} else if (!e.target.checked) {
-			const newSelectedArr = selected.filter(
-				(currItem) => currItem !== e.target.name
-			);
-			setSelected(newSelectedArr);
 			setSelectCount(selectCount - 1);
+			const newDownloadArr = selectDownload.filter(
+				(currItem) => currItem !== item
+			);
+			setSelectDownload(newDownloadArr);
 		}
 	}
 
@@ -66,10 +68,30 @@ export const DeviceList = () => {
 	}
 	useEffect(setIndeterminate);
 
+	const handleDownload = () => {
+		let alertMessage;
+
+		const downloadsAlert = selectDownload.map((d) => {
+			if (d.status == 'available') {
+				return `${d.device} - ${d.path}`;
+			} else {
+				return `Sorry ${d.device} is not available for download`;
+			}
+		});
+
+		if (downloadsAlert.length > 0) {
+			alertMessage = downloadsAlert.join('\n');
+		} else {
+			alertMessage = `Please select a file`;
+		}
+
+		alert(alertMessage);
+	};
+
 	return (
 		<table className="list-table">
 			<thead>
-				<tr>
+				<tr className="select-all-row">
 					<th className="checkbox-cell">
 						<Checkbox
 							forwardRef={selectAll}
@@ -85,8 +107,10 @@ export const DeviceList = () => {
 						</p>
 					</th>
 					<th>
-						<div>
-							<p>Download Selected</p>
+						<div className="download-button" onClick={handleDownload}>
+							<img src="/images/downloadIconSvg.svg" alt="download icon" />
+
+							<span>Download Selected</span>
 						</div>
 					</th>
 				</tr>
