@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './DeviceList.css';
 import { deviceData } from './deviceData';
 import { Checkbox } from './Checkbox';
+import { ListRow } from './ListRow';
 
 export const DeviceList = () => {
 	const selectAll = useRef(null);
@@ -19,9 +20,10 @@ export const DeviceList = () => {
 
 		if (e.target.checked) {
 			setSelectCount(deviceData.length);
+			setCheckedState(Array(deviceData.length).fill(true));
 		} else {
 			setSelectCount(0);
-			setSelected([]);
+			setCheckedState(Array(deviceData.length).fill(false));
 		}
 	}
 
@@ -99,26 +101,17 @@ export const DeviceList = () => {
 					))}
 				</tr>
 				{deviceData.map((data, key) => (
-					<tr key={key} className="list-row">
-						<td className="checkbox-cell">
-							<Checkbox
-								forwardRef={(r) => (selectCheckBox.current[key] = r)}
-								type={`checkbox`}
-								onChange={(event) => onChangeCheckBox(event, data)}
-								name={data.name}
-								id={key}
-							/>
-						</td>
-						<td className="name-cell">{data.name}</td>
-						<td className="device-cell">{data.device}</td>
-						<td className="path-cell">{data.path}</td>
-						<td className="status-cell">
-							{data.status === 'available' ? (
-								<span className="green-dot"></span>
-							) : null}
-							<span>{data.status}</span>
-						</td>
-					</tr>
+					<ListRow
+						key={key}
+						name={data.name}
+						device={data.device}
+						path={data.path}
+						status={data.status}
+						id={`checkbox-${key}`}
+						onChange={(event) => onChangeCheckBox(event, data)}
+						myRef={(r) => (selectCheckBox.current[key] = r)}
+						checked={checkedState[key]}
+					/>
 				))}
 			</tbody>
 		</table>

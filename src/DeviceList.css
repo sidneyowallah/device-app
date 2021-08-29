@@ -22,13 +22,6 @@ th {
 	cursor: pointer;
 }
 
-.select-background {
-	background-color: #ccc;
-}
-.select-background:hover {
-	background-color: #ccc;
-}
-
 .checkbox-cell {
 	text-align: center;
 	padding-left: 30px;
