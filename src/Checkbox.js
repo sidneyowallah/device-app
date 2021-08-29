@@ -1,13 +1,22 @@
 import React from 'react';
 import './Checkbox.css';
-export const Checkbox = ({ forwardRef, type, onChange, name, id }) => {
+export const Checkbox = ({ forwardRef, type, onChange, name, id, checked }) => {
 	return (
-		<input
-			ref={forwardRef}
-			type={type}
-			onChange={onChange}
-			name={name}
-			id={id}
-		/>
+		<>
+			<label htmlFor={type} className="visually-hidden">
+				{name}
+			</label>
+			<input
+				ref={forwardRef}
+				type={type}
+				onChange={onChange}
+				name={name}
+				id={id}
+				defaultChecked={checked}
+				aria-labelledby={name}
+				aria-checked={checked}
+				role={type}
+			/>
+		</>
 	);
 };
