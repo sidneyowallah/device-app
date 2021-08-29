@@ -1,0 +1,80 @@
+table {
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	margin: 20px auto;
+}
+
+td,
+th {
+	border-top: 1px solid #ddd;
+	padding: 10px 60px 10px 8px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+td input[type='checkbox'] {
+	width: 20px;
+	height: 20px;
+	display: block;
+	margin: 0px auto;
+}
+th input[type='checkbox'] {
+	width: 20px;
+	height: 20px;
+	display: block;
+	margin: 0px auto;
+}
+
+.header-row {
+	text-transform: capitalize;
+	font-size: 1.2em;
+}
+
+.list-row:hover {
+	background-color: #ddd;
+	cursor: pointer;
+}
+
+.select-background {
+	background-color: #ccc;
+}
+.select-background:hover {
+	background-color: #ccc;
+}
+
+.header-container {
+	display: flex;
+	flex-wrap: nowrap;
+	background-color: DodgerBlue;
+}
+
+.header-container > div {
+	background-color: #f1f1f1;
+	width: 100px;
+	margin: 10px;
+	text-align: center;
+	line-height: 75px;
+	font-size: 30px;
+}
+
+.checkbox-cell {
+	text-align: center;
+	padding-left: 30px;
+}
+
+.name-cell {
+	text-align: left;
+	min-width: 130px;
+}
+
+.device-cell {
+	text-align: left;
+}
+
+.path-cell {
+	text-align: left;
+}
+
+.status-cell {
+	text-align: left;
+}
