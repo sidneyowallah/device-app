@@ -72,7 +72,7 @@ export const DeviceList = () => {
 		let alertMessage;
 
 		const downloadsAlert = selectDownload.map((d) => {
-			if (d.status == 'available') {
+			if (d.status === 'available') {
 				return `${d.device} - ${d.path}`;
 			} else {
 				return `Sorry ${d.device} is not available for download`;
