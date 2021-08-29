@@ -32,7 +32,7 @@ describe('Renders the page', () => {
 		cy.get('#checkbox-0').click();
 		cy.get('#checkbox-2').click();
 		cy.get('#checkbox-2').click();
-		cy.get('#selectAll').click();
+		cy.get('#checkbox-selectAll').click();
 		cy.get('.select-count').contains('Selected 5');
 	});
 
@@ -40,7 +40,7 @@ describe('Renders the page', () => {
 		cy.visit('/');
 		cy.get('#checkbox-0').click();
 		cy.get('#checkbox-2').click();
-		cy.get('#selectAll').click();
+		cy.get('#checkbox-selectAll').click();
 		cy.get('.select-count').contains('Selected 5');
 	});
 
@@ -52,7 +52,7 @@ describe('Renders the page', () => {
 		cy.get('#checkbox-3').click();
 		cy.get('#checkbox-4').click();
 		cy.get('.select-count').contains('Selected 5');
-		cy.get('#selectAll').click();
+		cy.get('#checkbox-selectAll').click();
 		cy.get('.select-count').contains('None Selected');
 	});
 
@@ -65,7 +65,7 @@ describe('Renders the page', () => {
 		cy.visit('/');
 		cy.get('.download-button').click();
 		cy.on('window:alert', (txt) => {
-			expect(txt).to.contains('Please select a file');
+			expect(txt).contains('Please select a file');
 		});
 	});
 });

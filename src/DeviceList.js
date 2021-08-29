@@ -131,7 +131,7 @@ export const DeviceList = () => {
 						device={data.device}
 						path={data.path}
 						status={data.status}
-						id={`checkbox-${key}`}
+						id={key}
 						onChange={(event) => onChangeCheckBox(event, data)}
 						myRef={(r) => (selectCheckBox.current[key] = r)}
 						checked={checkedState[key]}
