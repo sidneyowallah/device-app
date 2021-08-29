@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './DeviceList.css';
 import { deviceData } from './deviceData';
+import { Checkbox } from './Checkbox';
 
 export const DeviceList = () => {
 	const selectAll = useRef(null);
@@ -68,9 +69,9 @@ export const DeviceList = () => {
 			<thead>
 				<tr>
 					<th className="checkbox-cell">
-						<input
-							ref={selectAll}
-							type="checkbox"
+						<Checkbox
+							forwardRef={selectAll}
+							type={`checkbox`}
 							onChange={onChangeSelectAll}
 							name={`selectAll`}
 							id={`selectAll`}
@@ -100,11 +101,12 @@ export const DeviceList = () => {
 				{deviceData.map((data, key) => (
 					<tr key={key} className="list-row">
 						<td className="checkbox-cell">
-							<input
-								ref={(r) => (selectCheckBox.current[key] = r)}
-								type="checkbox"
+							<Checkbox
+								forwardRef={(r) => (selectCheckBox.current[key] = r)}
+								type={`checkbox`}
 								onChange={(event) => onChangeCheckBox(event, data)}
 								name={data.name}
+								id={key}
 							/>
 						</td>
 						<td className="name-cell">{data.name}</td>
