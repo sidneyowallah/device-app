@@ -77,4 +77,15 @@ th input[type='checkbox'] {
 
 .status-cell {
 	text-align: left;
+	text-transform: capitalize;
+}
+
+.green-dot {
+	height: 15px;
+	width: 15px;
+	margin-right: 5px;
+	margin-left: -20px;
+	background-color: #6ed659;
+	border-radius: 50%;
+	display: inline-block;
 }
